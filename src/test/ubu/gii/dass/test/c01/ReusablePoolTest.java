@@ -66,7 +66,7 @@ public class ReusablePoolTest {
 		try {
 			Reusable reusable3 = pool.acquireReusable();
 		} catch (NotFreeInstanceException e) {
-			assertEquals(e.getMessage(),"No hay más instancias reutilizables disponibles. Reintentalo más tarde");
+			assertEquals(e.getMessage(),"No hay mas instancias reutilizables disponibles. Reintentalo mas tarde");
 		}
 		
 	}
