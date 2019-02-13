@@ -10,6 +10,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import ubu.gii.dass.c01.ReusablePool;
+import ubu.gii.dass.c01.Reusable;
+import ubu.gii.dass.c01.NotFreeInstanceException;
 
 /**
  * @author Raul Olles
@@ -50,8 +52,23 @@ public class ReusablePoolTest {
 	 * Test method for {@link ubu.gii.dass.c01.ReusablePool#acquireReusable()}.
 	 */
 	@Test
-	public void testAcquireReusable() {
-		fail("Not yet implemented");
+	public void testAcquireReusable() throws NotFreeInstanceException{
+		// Intenta adquirir dos objetos de la clase Reusable
+		Reusable reusable1 = pool.acquireReusable();
+		Reusable reusable2 = pool.acquireReusable();
+		
+		// Comprueba que se hayan adquerido
+		assertNotEquals(reusable1, null);
+		assertNotEquals(reusable2, null);
+		
+		// Comprueba el salto de excepcion (maximo pool == 2)
+		
+		try {
+			Reusable reusable3 = pool.acquireReusable();
+		} catch (NotFreeInstanceException e) {
+			assertEquals(e.getMessage(),"No hay más instancias reutilizables disponibles. Reintentalo más tarde");
+		}
+		
 	}
 
 	/**
