@@ -9,17 +9,25 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import ubu.gii.dass.c01.ReusablePool;
+
 /**
- * @author alumno
+ * @author Raul Olles
  *
  */
 public class ReusablePoolTest {
+
+	// Crea un pool a utilizar en todo el proceso de prueba
+	ReusablePool pool;
 
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
+		// Instancia el pool
+		pool = ReusablePool.getInstance();
+
 	}
 
 	/**
@@ -34,7 +42,8 @@ public class ReusablePoolTest {
 	 */
 	@Test
 	public void testGetInstance() {
-		fail("Not yet implemented");
+		// Comprueba si el pool instanciado en @Before es correcto
+		assertTrue(pool instanceof ReusablePool);
 	}
 
 	/**
