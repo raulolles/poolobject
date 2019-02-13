@@ -63,7 +63,6 @@ public class ReusablePoolTest {
 		assertNotEquals(reusable2, null);
 		
 		// Comprueba el salto de excepcion (maximo pool == 2)
-		
 		try {
 			Reusable reusable3 = pool.acquireReusable();
 		} catch (NotFreeInstanceException e) {
@@ -82,7 +81,7 @@ public class ReusablePoolTest {
 		Reusable reusable1 = pool.acquireReusable();
 		Reusable reusable2 = pool.acquireReusable();
 
-		// Intenta liberar los objetos que NO ESTÁN en el pool
+		// Intenta liberar los objetos que NO ESTAN en el pool
 		try {
 			pool.releaseReusable(reusable1);
 		} catch (DuplicatedInstanceException e) {
@@ -95,7 +94,7 @@ public class ReusablePoolTest {
 			assertTrue(false);
 		}
 		
-		// Intenta liberar los objetos que SI ESTÁN en el pool
+		// Intenta liberar los objetos que SI ESTAN en el pool
 		try {
 			pool.releaseReusable(reusable1);
 		} catch (DuplicatedInstanceException e) {
